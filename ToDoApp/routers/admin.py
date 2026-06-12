@@ -1,5 +1,4 @@
 from fastapi import APIRouter, Depends, HTTPException, Path
-from pydantic import BaseModel, Field
 from starlette import status
 from models import Todos
 from database import SessionLocal
