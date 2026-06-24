@@ -1,8 +1,8 @@
 from fastapi import APIRouter, Depends, HTTPException, Path
 from pydantic import BaseModel, Field
 from starlette import status
-from models import Todos
-from database import SessionLocal
+from ..models import Todos
+from ..database import SessionLocal
 from typing import Annotated
 from sqlalchemy.orm import Session
 from .auth import  get_current_user
@@ -68,7 +68,7 @@ async def update_todo(user: user_dependency,db: db_dependency,todo_request: Todo
     db.add(todo_model)
     db.commit()
 
-@router.delete('/delete/{todo_id}', status_code=status.HTTP_204_NO_CONTENT)
+@router.delete('/todo/{todo_id}', status_code=status.HTTP_204_NO_CONTENT)
 async def delete_todo(user: user_dependency,db: db_dependency, todo_id: int = Path(gt=0)):
     if user is None:
         raise HTTPException(status_code=401, detail='Authentication Failed')
