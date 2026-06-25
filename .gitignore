@@ -1,3 +1,7 @@
+.idea/
+ToDoApp/.idea/
+*.iml
+*.db
+__pycache__/
 /venv
-
-ToDoApp/todos.db
+.env

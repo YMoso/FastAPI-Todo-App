@@ -10,14 +10,21 @@ from passlib.context import CryptContext
 from fastapi.security import OAuth2PasswordRequestForm, OAuth2PasswordBearer
 from jose import jwt, JWTError
 from fastapi.templating import Jinja2Templates
+from dotenv import load_dotenv
+import os
+load_dotenv()
+
 
 router = APIRouter(
     prefix="/auth",
     tags=["auth"],
 )
 
-SECRET_KEY = "c792aaec6f78b3aad4bf5d585f72e06f77c37e4cbe39648b0b3b8fdd1a2e35a8"
-ALGORITHM = "HS256"
+SECRET_KEY = os.getenv("SECRET_KEY")
+ALGORITHM = os.getenv("ALGORITHM", "HS256")
+
+if SECRET_KEY is None:
+    raise RuntimeError("SECRET_KEY environment variable is not set")
 
 bcrypt_contex = CryptContext(schemes=["bcrypt"], deprecated="auto")
 oauth2_bearer = OAuth2PasswordBearer(tokenUrl="auth/token")
