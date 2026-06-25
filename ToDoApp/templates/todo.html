@@ -1,0 +1,75 @@
+{% extends 'layout.html' %}
+
+{% block content %}
+
+<div class="container">
+  <div class="card">
+    <div class="card-header d-flex justify-content-between align-items-center">
+      <span>Your Todos</span>
+      <a href="/todos/add-todo-page" class="btn btn-primary btn-sm">
+        New Todo
+      </a>
+    </div>
+
+    <div class="card-body">
+      <h5 class="card-title">
+        Task dashboard
+      </h5>
+
+      <p class="card-text">
+        Track what you need to do and mark tasks as completed.
+      </p>
+
+      <table class="table table-hover">
+        <thead>
+          <tr>
+            <th scope="col">#</th>
+            <th scope="col">Task</th>
+            <th scope="col">Status</th>
+            <th scope="col" class="text-right">Actions</th>
+          </tr>
+        </thead>
+
+        <tbody>
+          {% for todo in todos %}
+          <tr class="todo-row {% if todo.complete %}todo-row-complete{% endif %}">
+            <td>{{ loop.index }}</td>
+
+            <td>
+              <span class="todo-title {% if todo.complete %}todo-title-complete{% endif %}">
+                {{ todo.title }}
+              </span>
+            </td>
+
+            <td>
+              {% if todo.complete %}
+                <span class="todo-status todo-status-complete">Completed</span>
+              {% else %}
+                <span class="todo-status">Active</span>
+              {% endif %}
+            </td>
+
+            <td class="text-right">
+              <button onclick="window.location.href='/todos/edit-todo-page/{{ todo.id }}'"
+                      type="button"
+                      class="btn btn-primary btn-sm">
+                Edit
+              </button>
+            </td>
+          </tr>
+          {% else %}
+          <tr>
+            <td colspan="4">
+              <div class="empty-state">
+                No todos yet. Add your first task to get started.
+              </div>
+            </td>
+          </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+
+{% endblock %}
