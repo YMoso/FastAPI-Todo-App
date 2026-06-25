@@ -1,0 +1,48 @@
+{% extends 'layout.html' %}
+
+{% block content %}
+
+<div class="container">
+  <div class="card auth-card-narrow">
+    <div class="card-header">
+      Login
+    </div>
+
+    <div class="card-body">
+      <p class="text-muted mb-4">
+        Sign in to manage your todos.
+      </p>
+
+      <form id="loginForm">
+        <div class="form-group">
+          <label>Username</label>
+          <input type="text"
+                 class="form-control"
+                 name="username"
+                 autocomplete="username"
+                 required>
+        </div>
+
+        <div class="form-group">
+          <label>Password</label>
+          <input type="password"
+                 class="form-control"
+                 name="password"
+                 autocomplete="current-password"
+                 required>
+        </div>
+
+        <button type="submit" class="btn btn-primary btn-block">
+          Login
+        </button>
+      </form>
+    </div>
+
+    <div class="card-footer text-muted text-center">
+      Don’t have an account?
+      <a href="/auth/register-page">Register</a>
+    </div>
+  </div>
+</div>
+
+{% endblock %}

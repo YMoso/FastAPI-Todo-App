@@ -1,0 +1,70 @@
+{% extends 'layout.html' %}
+
+{% block content %}
+
+<section class="container">
+  <div class="card hero-card">
+    <div class="card-body text-center">
+      <span class="hero-badge">FastAPI Todo App</span>
+
+      <h1 class="hero-title">
+        Organize your tasks without overthinking it.
+      </h1>
+
+      <p class="hero-subtitle">
+        A simple full-stack todo application with authentication, personal task lists
+        and a clean dashboard for tracking what needs to be done.
+      </p>
+
+      <div class="hero-actions">
+        <a href="/auth/login-page" class="btn btn-primary">
+          Login
+        </a>
+
+        <a href="/auth/register-page" class="btn btn-outline-primary">
+          Create account
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <div class="row mt-4">
+    <div class="col-md-4 mb-3">
+      <div class="card feature-card h-100">
+        <div class="card-body">
+          <span class="feature-label">Task management</span>
+          <h5>Track your work</h5>
+          <p>
+            Create, edit, complete, and delete todos from one clean dashboard.
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-md-4 mb-3">
+      <div class="card feature-card h-100">
+        <div class="card-body">
+          <span class="feature-label">User accounts</span>
+          <h5>Personal task lists</h5>
+          <p>
+            Each account has its own todo list, connected to the logged-in user.
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-md-4 mb-3">
+      <div class="card feature-card h-100">
+        <div class="card-body">
+          <span class="feature-label">Backend project</span>
+          <h5>Built with FastAPI</h5>
+          <p>
+            Uses FastAPI, JWT authentication, SQLAlchemy, Alembic, and templates.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+{% endblock %}
